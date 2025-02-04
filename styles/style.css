@@ -141,3 +141,44 @@
     font-family: var(--fonte-secundaria);
     border: 2px solid pink;
 }
+
+/*Projetos*/
+.projetos{
+    padding: 5% 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4rem;
+    border: 2px solid yellow;
+}
+
+.projetos-titulo{
+    font-size: 2.5rem;
+    font-family: var(--fonte-primaria);
+    border: 2px solid pink;
+}
+
+.projetos-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4rem;
+    border: 2px solid purple;
+}
+.projetos-projeto-imagem{
+    width: 30%;
+    border-radius: 5rem;
+    border: 2px solid green;
+}
+
+.projetos-projeto-titulo{
+    font-size: 1.5rem;
+    font-family: var(--fonte-primaria);
+    border: 2px solid green;
+}
+
+.projetos-projeto-descricao{
+    font-size: 1rem;
+    font-family: var(--fonte-secundaria);
+    border: 2px solid yellow;
+}
