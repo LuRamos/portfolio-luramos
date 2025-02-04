@@ -182,3 +182,64 @@
     font-family: var(--fonte-secundaria);
     border: 2px solid yellow;
 }
+
+/*Contato*/
+.contato{
+    padding: 5% 15%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4rem;
+    border: 2px solid pink;
+}
+
+.contato-titulo{
+    font-size: 2.5rem;
+    font-family: var(--fonte-primaria);
+    border: 2px solid yellow;
+}
+
+.contato-descricao{
+    font-size: 1rem;
+    font-family: var(--fonte-secundaria);
+    border: 2px solid purple;
+}
+
+.contato-redes{
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    border: 2px solid green;
+}
+
+.contato-redes-link{
+    color: var(--cor-secundaria);
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: color 0.5s;
+    font-family: var(--fonte-secundaria);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.contato-redes-imagem{
+    width: 2rem;
+    border: 2px solid yellow;
+}
+
+.rodape{
+    padding: 2% 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid yellow;
+}
+.rodape-descricao{
+    font-size: 1rem;
+    font-family: var(--fonte-secundaria);
+    border: 2px solid pink;
+}
