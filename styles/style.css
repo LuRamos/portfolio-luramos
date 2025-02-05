@@ -9,7 +9,6 @@
   --cor-sessao-primaria: rgb(155, 118, 175);
   --cor-sessao-secundaria: #ad49e1;
 
-  --cor-tecnologias: ;
 
   --fonte-primaria: "Krona One", sans-serif;
   --fonte-secundaria: "Montserrat", sans-serif;
@@ -129,6 +128,24 @@ body {
   border: 2px solid var(--cor-secundaria);
   padding: 0.5rem 1rem;
   border-radius: 1rem;
+  
+  transition:0.3s ease;
+}
+
+.apresentacao-links-link:hover {
+  color: var(--cor-hover);
+  border-color: var(--cor-hover);
+}
+
+.apresentacao-links-link img {
+  filter: brightness(0) saturate(100%);
+  width: 2rem;
+  height: 2rem;
+  transition: filter 1s ease;
+}
+
+.apresentacao-links-link:hover img {
+  filter: brightness(0) saturate(100%) drop-shadow(0 0 5px rgb(142, 5, 194));
 }
 
 /*Sobre*/
@@ -277,11 +294,39 @@ body {
 
   padding: 0.5rem 1rem;
   border-radius: 1rem;
+  transition: 0.3s ease;
 }
 
 .contato-redes-imagem {
   width: 2rem;
 }
+
+.contato-redes-link:hover {
+  color: var(--cor-hover);
+  border-color: var(--cor-hover);
+}
+
+
+
+.contato-redes-imagem img {
+  filter: brightness(0) saturate(100%);
+  width: 2rem;
+  height: 2rem;
+  transition: filter 1s ease;
+}
+
+.contato-redes-imagem:hover img {
+  filter: brightness(0) saturate(100%) drop-shadow(0 0 5px rgb(142, 5, 194));
+}
+
+
+
+
+
+
+
+
+/*Rodapé*/
 
 .rodape {
   border-top: 2px solid var(--cor-secundaria);
