@@ -36,3 +36,48 @@ document.getElementById('copiarEmail').addEventListener('click', function(event)
         }, 3000);
     });
 });
+
+
+
+
+
+
+//Slider
+
+// Variáveis para controlar o índice da imagem atual e a lista de imagens
+let currentSlide = 0; // A imagem inicial será a primeira (índice 0)
+const images = document.querySelectorAll(".sobre-slider-slide img"); // Seleciona todas as imagens do slider
+const totalSlides = images.length; // Obtém o número total de imagens no slider
+
+// Botões para navegação no slider
+const prevButton = document.querySelector(".slider-prev"); // Seleciona o botão "anterior"
+const nextButton = document.querySelector(".slider-next"); // Seleciona o botão "próximo"
+const sliderImages = document.querySelector(".sobre-slider-slide"); // Seleciona o contêiner das imagens do slider
+
+// Função para exibir a imagem correspondente ao índice fornecido
+function showSlide(index) {
+  // Se o índice for menor que 0, vai para a última imagem
+  if (index < 0) {
+    currentSlide = totalSlides - 1; // Vai para a última imagem
+  } else if (index >= totalSlides) {
+    currentSlide = 0; // Vai para a primeira imagem
+  }
+
+  // Desloca o contêiner das imagens para exibir a imagem atual, com base no índice
+  sliderImages.style.transform = `translateX(-${currentSlide * 100}%)`; // Move as imagens horizontalmente
+}
+
+// Adiciona o evento de clique no botão "anterior"
+prevButton.addEventListener("click", () => {
+  currentSlide--; // Decrementa o índice para ir para a imagem anterior
+  showSlide(currentSlide); // Atualiza o slider para mostrar a nova imagem
+});
+
+// Adiciona o evento de clique no botão "próximo"
+nextButton.addEventListener("click", () => {
+  currentSlide++; // Incrementa o índice para ir para a próxima imagem
+  showSlide(currentSlide); // Atualiza o slider para mostrar a nova imagem
+});
+
+// Exibe a primeira imagem assim que a página for carregada
+showSlide(currentSlide);

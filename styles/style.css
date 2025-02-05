@@ -41,10 +41,12 @@ body {
   position: fixed;
   width: 100%;
   transition: 1s;
+  z-index: 10;
 }
 
 #cabecalho.ativo {
   background-color: var(--cor-primaria);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra suave */
 }
 
 .cabecalho-menu {
@@ -178,6 +180,8 @@ body {
   gap: 4rem;
   background-color: var(--cor-sessao-primaria);
   height: 100vh;
+  min-height: calc(100vh - 60px); /* Ajuste conforme a altura do seu cabeçalho */
+
 }
 
 .sobre-titulo {
@@ -195,11 +199,67 @@ body {
   align-items: center;
 }
 
+/* Estilos do contêiner do slider */
+.sobre-slider {
+  position: relative; /* Necessário para posicionar os botões de navegação dentro do contêiner */
+  max-width: 100%; /* Garante que o slider ocupe toda a largura disponível */
+  width: 80%; /* Ajusta a largura do slider (você pode modificar esse valor conforme necessário) */
+  overflow: hidden; /* Garante que as imagens que saem da área do contêiner não apareçam */
+  margin-top: 20px; /* Cria um espaçamento entre o slider e o conteúdo que está acima dele */
+}
+
+/* Estilos para o contêiner das imagens dentro do slider */
+.sobre-slider-slide {
+  display: flex; /* Exibe as imagens de forma horizontal */
+  transition: transform 0.5s ease; /* Faz uma transição suave quando a posição das imagens mudar */
+}
+
+/* Estilos das imagens dentro do slider */
+.sobre-slider-slide img {
+  width: 100%; /* Faz com que as imagens ocupem toda a largura do contêiner */
+  object-fit: cover; /* Garante que as imagens cubram toda a área do contêiner sem distorção */
+}
+
+/* Estilos para os botões de navegação */
+button {
+  position: absolute; /* Posiciona os botões dentro do contêiner do slider */
+  top: 50%; /* Posiciona os botões no meio vertical do slider */
+  transform: translateY(-50%); /* Ajusta para que o botão fique exatamente no meio */
+  background-color: transparent; /* Torna o fundo do botão transparente */
+  color: white; /* Define a cor do texto dos botões como branco */
+  border: none; /* Remove a borda do botão */
+  padding: -2rem; /* Ajusta o tamanho do padding do botão (não afetando o conteúdo interno diretamente) */
+  cursor: pointer; /* Muda o cursor para uma mãozinha ao passar sobre o botão */
+  font-size: 2rem; /* Define o tamanho da fonte do botão */
+  z-index: 1; /* Garante que o botão fique acima das imagens no slider */
+  opacity: 0.8; /* Aplica uma opacidade sutil ao botão */
+  transition: opacity 0.3s ease, transform 0.3s ease; /* Define uma transição suave para mudanças de opacidade e tamanho */
+}
+
+/* Estilos específicos para o botão de navegação "anterior" */
+.slider-prev {
+  left: 10px; /* Posiciona o botão "anterior" à esquerda do slider */
+}
+
+/* Estilos específicos para o botão de navegação "próximo" */
+.slider-next {
+  right: 10px; /* Posiciona o botão "próximo" à direita do slider */
+}
+
+/* Estilos para os botões quando o mouse passa sobre eles */
+button:hover {
+  opacity: 1; /* Faz o botão ficar completamente visível ao passar o mouse sobre ele */
+  transform: translateY(-50%) scale(1.1); /* Faz o botão aumentar levemente de tamanho ao passar o mouse */
+}
+
+
 .sobre-descricao {
   font-size: 1rem;
   font-family: var(--fonte-secundaria);
+  font-weight: 600;
   text-align: justify;
   line-height: 1.5;
+  width: 400rem;
 
   color: var(--cor-primaria);
 }
@@ -247,6 +307,8 @@ body {
   height: 50%;
   object-fit: cover; /* mantém a imagem proporcional */
 }
+
+
 
 .projetos-projeto-titulo {
   text-align: center;
