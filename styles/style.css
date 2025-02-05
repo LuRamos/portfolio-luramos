@@ -129,24 +129,45 @@ body {
   padding: 0.5rem 1rem;
   border-radius: 1rem;
   
-  transition:0.3s ease;
+  position: relative;
+  overflow: hidden;
+  transition:0.5s ease;
+}
+
+.apresentacao-links-link::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background-color: var(--cor-secundaria);
+  transition: left 0.5s ease-in-out;
+  z-index: -1;
 }
 
 .apresentacao-links-link:hover {
-  color: var(--cor-hover);
-  border-color: var(--cor-hover);
+  color: var(--cor-primaria);
+  border-color: var(--cor-secundaria);
+  background-color: var(--cor-secundaria);
 }
+
+.apresentacao-links-link:hover::before {
+  left: 0;
+}
+
 
 .apresentacao-links-link img {
   filter: brightness(0) saturate(100%);
   width: 2rem;
   height: 2rem;
-  transition: filter 1s ease;
+  transition: filter 0.5s ease;
 }
 
 .apresentacao-links-link:hover img {
-  filter: brightness(0) saturate(100%) drop-shadow(0 0 5px rgb(142, 5, 194));
+  filter: brightness(0) invert(1);
 }
+
 
 /*Sobre*/
 .sobre {
@@ -287,44 +308,60 @@ body {
   font-family: var(--fonte-secundaria);
   display: flex;
   align-items: center;
-  flex-direction: row;
   gap: 0.5rem;
-
   border: 2px solid var(--cor-secundaria);
-
   padding: 0.5rem 1rem;
   border-radius: 1rem;
-  transition: 0.3s ease;
+  
+  position: relative;
+  overflow: hidden;
+  transition:0.5s ease;
 }
+
+.contato-redes-link::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background-color: var(--cor-secundaria);
+  transition: left 0.5s ease-in-out;
+  z-index: -1;
+}
+
+
 
 .contato-redes-imagem {
   width: 2rem;
 }
 
 .contato-redes-link:hover {
-  color: var(--cor-hover);
-  border-color: var(--cor-hover);
+  color: var(--cor-primaria);
+  border-color: var(--cor-secundaria);
+  background-color: var(--cor-secundaria);
+}
+
+.contato-redes-link:hover::before {
+  left: 0; /* Animação de preenchimento do fundo */
 }
 
 
-
-.contato-redes-imagem img {
+.contato-redes-link img {
   filter: brightness(0) saturate(100%);
   width: 2rem;
   height: 2rem;
-  transition: filter 1s ease;
+  transition: filter 0.5s ease;
 }
 
-.contato-redes-imagem:hover img {
-  filter: brightness(0) saturate(100%) drop-shadow(0 0 5px rgb(142, 5, 194));
+.contato-redes-link:hover img {
+  filter: brightness(0) invert(1);
 }
-
-
 
 /* Estilização do alerta */
 .alerta {
   position: fixed;
-  bottom: 15%;
+  bottom: 12%;
   left: 50%;
   padding: 10px 20px;
   transform: translateX(-50%);
