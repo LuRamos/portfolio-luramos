@@ -1,83 +1,131 @@
-// Seleção correta do cabeçalho pelo ID
-const cabecalho = document.querySelector('#cabecalho');
+const cabecalho = document.querySelector("#cabecalho");
 
-function verificarScroll(){
-    if(window.scrollY > 0){
-        cabecalho.classList.add('ativo');// Adiciona a classe 'ativo' quando o scroll for maior que 0
-    }else{
-        cabecalho.classList.remove('ativo'); // Remove a classe 'ativo' quando o scroll for no topo
-    }
+// Função para verificar o scroll do cabeçalho
+function verificarScrollCabecalho() {
+  console.log(window.scrollY); // Verifique o valor do scroll
+  if (window.scrollY > 0) {
+    cabecalho.classList.add("ativo"); // Adiciona a classe 'ativo' quando o scroll for maior que 0
+  } else {
+    cabecalho.classList.remove("ativo"); // Remove a classe 'ativo' quando o scroll for no topo
+  }
 }
-// Adicionando o evento de scroll
-window.addEventListener('scroll', verificarScroll);
+
+// Variáveis
+const menuMobile = document.getElementById("menu-mobile"); // Botão de menu hambúrguer
+const menuLista = document.getElementById("cabecalho-menu-lista"); // Lista do menu
+
+// Função para verificar o scroll do cabeçalho e do menu hambúrguer
+function verificarScrollCabecalho() {
+  const cabecalho = document.getElementById("cabecalho");
+
+  if (window.scrollY > 0) {
+    cabecalho.classList.add("ativo"); // Fixando o cabeçalho
+  } else {
+    cabecalho.classList.remove("ativo"); // Removendo a fixação
+  }
+}
+
+// Adicionando os eventos de scroll
+window.addEventListener("scroll", verificarScrollCabecalho);
+
+
+
+
+
+
+
+
+
 
 
 // Seleciona o elemento com o ID 'copiarEmail' e adiciona um evento de clique
-document.getElementById('copiarEmail').addEventListener('click', function(event) {
-    
+document
+  .getElementById("copiarEmail")
+  .addEventListener("click", function (event) {
     // Impede o comportamento padrão do link (evita que a página recarregue)
     event.preventDefault();
 
     // Define a variável 'email' com o endereço de e-mail a ser copiado
-    const email = 'luanaramosdsantos@gmail.com';
+    const email = "luanaramosdsantos@gmail.com";
 
     // Usa a API do navegador para copiar o texto (neste caso, o e-mail) para a área de transferência
-    navigator.clipboard.writeText(email).then(function() {
-        
-        // Seleciona o elemento do alerta pelo ID 'alerta-copiado'
-        let alerta = document.getElementById("alerta-copiado");
-        
-        // Exibe o alerta definindo o estilo 'display' como 'block'
-        alerta.style.display = "block";
-        
-        // Define um temporizador para esconder o alerta após 3 segundos (3000 milissegundos)
-        setTimeout(() => {
-            alerta.style.display = "none";
-        }, 3000);
+    navigator.clipboard.writeText(email).then(function () {
+      // Seleciona o elemento do alerta pelo ID 'alerta-copiado'
+      let alerta = document.getElementById("alerta-copiado");
+
+      // Exibe o alerta definindo o estilo 'display' como 'block'
+      alerta.style.display = "block";
+
+      // Define um temporizador para esconder o alerta após 3 segundos (3000 milissegundos)
+      setTimeout(() => {
+        alerta.style.display = "none";
+      }, 3000);
     });
-});
+  });
 
 
 
 
 
 
-//Slider
 
-// Variáveis para controlar o índice da imagem atual e a lista de imagens
-let currentSlide = 0; // A imagem inicial será a primeira (índice 0)
-const images = document.querySelectorAll(".sobre-slider-slide img"); // Seleciona todas as imagens do slider
-const totalSlides = images.length; // Obtém o número total de imagens no slider
+  let currentSlide = 0;
+  const images = document.querySelectorAll(".sobre-slider-imagem");
+  const totalSlides = images.length;
+  const prevButton = document.querySelector(".slider-prev");
+  const nextButton = document.querySelector(".slider-next");
+  const sliderImages = document.querySelector(".sobre-slider-slide");
+  
+  // Define o número total de slides como uma variável CSS
+  sliderImages.style.setProperty('--totalSlides', totalSlides);
+  
+  function showSlide(index) {
+    if (index < 0) {
+      currentSlide = totalSlides - 1;
+    } else if (index >= totalSlides) {
+      currentSlide = 0;
+    }
+  
+    const offset = -currentSlide * 100;
+    sliderImages.style.transform = `translateX(${offset}%)`;
+  }
+  
+  prevButton.addEventListener("click", () => {
+    currentSlide--;
+    showSlide(currentSlide);
+  });
+  
+  nextButton.addEventListener("click", () => {
+    currentSlide++;
+    showSlide(currentSlide);
+  });
+  
+  showSlide(currentSlide);
 
-// Botões para navegação no slider
-const prevButton = document.querySelector(".slider-prev"); // Seleciona o botão "anterior"
-const nextButton = document.querySelector(".slider-next"); // Seleciona o botão "próximo"
-const sliderImages = document.querySelector(".sobre-slider-slide"); // Seleciona o contêiner das imagens do slider
 
-// Função para exibir a imagem correspondente ao índice fornecido
-function showSlide(index) {
-  // Se o índice for menor que 0, vai para a última imagem
-  if (index < 0) {
-    currentSlide = totalSlides - 1; // Vai para a última imagem
-  } else if (index >= totalSlides) {
-    currentSlide = 0; // Vai para a primeira imagem
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const menuMobile = document.querySelector("#menu-mobile");
+  const menuLista = document.querySelector("#menu-lista");
+  const linhas = document.querySelectorAll(".cabecalho-menu-mobile div");
+
+  if (!menuMobile || !menuLista) {
+    console.error("Erro: Elementos não encontrados.");
+    return;
   }
 
-  // Desloca o contêiner das imagens para exibir a imagem atual, com base no índice
-  sliderImages.style.transform = `translateX(-${currentSlide * 100}%)`; // Move as imagens horizontalmente
-}
+  // Abrir/Fechar o menu
+  menuMobile.addEventListener("click", () => {
+    menuLista.classList.toggle("ativo"); // Mostra e esconde o menu
+    linhas.forEach((linha) => linha.classList.toggle("ativa")); // Ativa/desativa a animação do hambúrguer
+  });
 
-// Adiciona o evento de clique no botão "anterior"
-prevButton.addEventListener("click", () => {
-  currentSlide--; // Decrementa o índice para ir para a imagem anterior
-  showSlide(currentSlide); // Atualiza o slider para mostrar a nova imagem
+  // Fecha o menu ao clicar em um item
+  document.querySelectorAll(".cabecalho-menu-link").forEach((link) => {
+    link.addEventListener("click", () => {
+      menuLista.classList.remove("ativo");
+      linhas.forEach((linha) => linha.classList.remove("ativa"));
+    });
+  });
 });
-
-// Adiciona o evento de clique no botão "próximo"
-nextButton.addEventListener("click", () => {
-  currentSlide++; // Incrementa o índice para ir para a próxima imagem
-  showSlide(currentSlide); // Atualiza o slider para mostrar a nova imagem
-});
-
-// Exibe a primeira imagem assim que a página for carregada
-showSlide(currentSlide);

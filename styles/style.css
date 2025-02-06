@@ -9,14 +9,12 @@
   --cor-sessao-primaria: rgb(155, 118, 175);
   --cor-sessao-secundaria: #ad49e1;
 
-
   --fonte-primaria: "Krona One", sans-serif;
   --fonte-secundaria: "Montserrat", sans-serif;
 
-  --color:rgb(255, 241, 136); /* Definindo a variável de cor */
+  --color: rgb(255, 241, 136); /* Definindo a variável de cor */
   --border-size: 1rem;
   --bg-color: #252525;
-
 }
 
 * {
@@ -45,6 +43,8 @@ body {
   padding: 2vh 4vh;
   position: fixed;
   width: 100%;
+   top: 0; /* Certifique-se de que o cabeçalho está fixado no topo */
+  left: 0; /* Para garantir que ele ocupe a largura inteira */
   transition: 1s;
   z-index: 10;
 }
@@ -81,9 +81,17 @@ body {
   color: var(--cor-hover);
 }
 
+.cabecalho-menu-mobile {
+  display: none;
+  cursor: pointer;
+}
 
-
-
+.cabecalho-menu-mobile div {
+  width: 32px;
+  height: 2px;
+  background: var(--cor-secundaria);
+  margin: 8px;
+}
 
 /*Main*/
 .apresentacao {
@@ -139,10 +147,10 @@ body {
   border: 2px solid var(--cor-secundaria);
   padding: 0.5rem 1rem;
   border-radius: 1rem;
-  
+
   position: relative;
   overflow: hidden;
-  transition:0.5s ease;
+  transition: 0.5s ease;
 }
 
 .apresentacao-links-link::before {
@@ -167,7 +175,6 @@ body {
   left: 0;
 }
 
-
 .apresentacao-links-link img {
   filter: brightness(0) saturate(100%);
   width: 2rem;
@@ -179,7 +186,6 @@ body {
   filter: brightness(0) invert(1);
 }
 
-
 /*Sobre*/
 .sobre {
   padding: 5% 15%;
@@ -188,9 +194,10 @@ body {
   justify-content: center;
   gap: 4rem;
   background-color: var(--cor-sessao-primaria);
-  height: 100vh;
-  min-height: calc(100vh - 60px); /* Ajuste conforme a altura do seu cabeçalho */
-
+  height: 120vh;
+  min-height: calc(
+    100vh - 60px
+  ); /* Ajuste conforme a altura do seu cabeçalho */
 }
 
 .sobre-titulo {
@@ -211,29 +218,37 @@ body {
 /* Estilos do contêiner do slider */
 .sobre-slider {
   position: relative; /* Necessário para posicionar os botões de navegação dentro do contêiner */
-  max-width: 100%; /* Garante que o slider ocupe toda a largura disponível */
+  max-width: 50%; /* Garante que o slider ocupe toda a largura disponível */
+  height: 80vh; /* 50% da altura da tela */
   width: 80%; /* Ajusta a largura do slider (você pode modificar esse valor conforme necessário) */
   overflow: hidden; /* Garante que as imagens que saem da área do contêiner não apareçam */
-  margin-top: 20px; /* Cria um espaçamento entre o slider e o conteúdo que está acima dele */
+  border:3px solid red;
+  border-radius: 4rem;
 }
 
 /* Estilos para o contêiner das imagens dentro do slider */
 .sobre-slider-slide {
-  display: flex; /* Exibe as imagens de forma horizontal */
-  transition: transform 0.5s ease; /* Faz uma transição suave quando a posição das imagens mudar */
+  display: flex;
+  transition: transform 0.5s ease;
+  width: calc(100% * var(--totalSlides)); /* Largura total baseada no número de imagens */
+  height: 100%; /* Ocupa 100% da altura do contêiner pai */
 }
 
 /* Estilos das imagens dentro do slider */
-.sobre-slider-slide img {
-  width: 100%; /* Faz com que as imagens ocupem toda a largura do contêiner */
-  object-fit: cover; /* Garante que as imagens cubram toda a área do contêiner sem distorção */
+.sobre-slider-imagem {
+  width: 100%; /* Cada imagem ocupa 100% da largura do contêiner pai */
+  height: 100%; /* Cada imagem ocupa 100% da altura do contêiner pai */
+  object-fit: cover; /* Garante que a imagem cubra o espaço sem distorcer */
+  object-position: center; /* Centraliza a imagem no contêiner */
 }
 
 /* Estilos para os botões de navegação */
 button {
   position: absolute; /* Posiciona os botões dentro do contêiner do slider */
   top: 50%; /* Posiciona os botões no meio vertical do slider */
-  transform: translateY(-50%); /* Ajusta para que o botão fique exatamente no meio */
+  transform: translateY(
+    -50%
+  ); /* Ajusta para que o botão fique exatamente no meio */
   background-color: transparent; /* Torna o fundo do botão transparente */
   color: white; /* Define a cor do texto dos botões como branco */
   border: none; /* Remove a borda do botão */
@@ -261,7 +276,6 @@ button:hover {
   transform: translateY(-50%) scale(1.1); /* Faz o botão aumentar levemente de tamanho ao passar o mouse */
 }
 
-
 .sobre-descricao {
   font-size: 1rem;
   font-family: var(--fonte-secundaria);
@@ -269,11 +283,10 @@ button:hover {
   text-align: justify;
   line-height: 1.5;
   width: 400rem;
+  height: 120vh;
 
   color: var(--cor-primaria);
 }
-
-
 
 .sobre-descricao strong {
   color: var(--cor-secundaria);
@@ -326,11 +339,13 @@ button:hover {
 .projetos-projeto::before {
   width: 200%;
   height: 200%;
-  background-image: conic-gradient(var(--cor-hover) 0deg, 
-      transparent 60deg, 
-      transparent 180deg, 
-      var(--cor-primaria) 180deg, 
-      transparent 240deg);
+  background-image: conic-gradient(
+    var(--cor-hover) 0deg,
+    transparent 60deg,
+    transparent 180deg,
+    var(--cor-primaria) 180deg,
+    transparent 240deg
+  );
   inset: -50%;
   z-index: -2;
   animation: border 8s linear infinite;
@@ -342,7 +357,7 @@ button:hover {
 
 @keyframes border {
   to {
-      transform: rotateZ(-360deg);
+    transform: rotateZ(-360deg);
   }
 }
 
@@ -359,8 +374,6 @@ button:hover {
   background-color: var(--cor-sessao-primaria);
 }
 
-
-
 .projetos-projeto-imagem {
   width: 100%;
   height: 200px; /* Defina um valor fixo para a altura, garantindo que ambas tenham a mesma altura */
@@ -368,8 +381,6 @@ button:hover {
   border-top-left-radius: 1rem; /* Arredonda apenas o canto superior esquerdo da imagem */
   border-top-right-radius: 1rem; /* Arredonda apenas o canto superior direito da imagem */
 }
-
-
 
 .projetos-projeto-titulo {
   text-align: center;
@@ -437,10 +448,10 @@ button:hover {
   border: 2px solid var(--cor-secundaria);
   padding: 0.5rem 1rem;
   border-radius: 1rem;
-  
+
   position: relative;
   overflow: hidden;
-  transition:0.5s ease;
+  transition: 0.5s ease;
 }
 
 .contato-redes-link::before {
@@ -455,8 +466,6 @@ button:hover {
   z-index: -1;
 }
 
-
-
 .contato-redes-imagem {
   width: 2rem;
 }
@@ -470,7 +479,6 @@ button:hover {
 .contato-redes-link:hover::before {
   left: 0; /* Animação de preenchimento do fundo */
 }
-
 
 .contato-redes-link img {
   filter: brightness(0) saturate(100%);
@@ -505,15 +513,22 @@ button:hover {
 
 /* Animação para aparecer e desaparecer */
 @keyframes fadeInOut {
-  0% { opacity: 0; transform: translateX(-50%) translateY(10px); }
-  20% { opacity: 1; transform: translateX(-50%) translateY(0); }
-  80% { opacity: 1; }
-  100% { opacity: 0; transform: translateX(-50%) translateY(-10px); }
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(10px);
+  }
+  20% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-10px);
+  }
 }
-
-
-
-
 
 /*Rodapé*/
 
@@ -529,113 +544,323 @@ button:hover {
   font-family: var(--fonte-secundaria);
 }
 
-
-
 /* Responsividade */
 
-@media(max-width: 1170px){
-  .cabecalho{
-  }
-  .cabecalho-menu-lista{
-    gap: 8rem;
+@media (min-width: 768px) and (max-width: 1182px) {
+  html,
+  body {
+    box-sizing: border-box;
   }
 
-  .apresentacao{
+  .cabecalho {
+    padding: 3vh 1vh;
+  }
+  .cabecalho-menu-lista {
+    gap: 7rem;
+  }
+
+  .apresentacao {
     padding: 10% 5%;
-  }
-  
-
-  .sobre{
-    padding: 5% 5%;
+    height: 70vh;
   }
 
-  .projetos{
+  .sobre {
+    padding: 0% 5%;
+  }
+
+  .projetos {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    
-    padding: 5% 5%;
+    height: 85vh;
+    padding: 0% 5%;
   }
-  .projetos-container{
+  .projetos-container {
     display: flex;
     flex-direction: row;
     justify-content: center;
     flex-wrap: nowrap; /* Itens vão tentar ocupar uma única linha */
- 
+
     gap: 2rem;
   }
 
-  .projetos-projeto{
-    width: calc(33.33% - 1rem); /* A largura dos cards agora será de 1/3 do contêiner, considerando o espaçamento */
+  .projetos-projeto {
+    width: calc(
+      33.33% - 1rem
+    ); /* A largura dos cards agora será de 1/3 do contêiner, considerando o espaçamento */
     box-sizing: border-box; /* Para garantir que o padding e border sejam considerados na largura */
+  }
 
+  .contato {
+    height: 35vh;
+    padding: 5% 0%;
+  }
+
+  .rodape {
+    padding-top: 0;
+    padding-bottom: 1vh;
+    height: 10vh;
   }
 }
 
-@media(max-width: 801px){
-
-
-
-  
-  .apresentacao{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 15% 5%;
-    border:2px solid black;
-  }
-  .apresentacao-conteudo{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 80%;
-    border:2px solid red;
+/* MEDIA QUERY PARA TELAS MENORES */
+@media (min-width: 600px) and (max-width: 767px) {
+  html,
+  body {
+    overflow-x: hidden;
+    box-sizing: border-box; /* Garantir que o padding não afete o layout */
   }
 
-  .apresentacao-conteudo-titulo{
-    text-align: center;
-  }
-
-  .apresentacao-conteudo-descricao{
-    text-align: center;
-  }
-
-
-
-
-  #apresentacao-imagem{
+  #cabecalho.ativo {
     display: none;
   }
 
-
-  .sobre{
-    padding: 15% 5%;
-  }
-
-
-  .projetos{
+  /* Define o tamanho e o espaçamento do menu */
+  .cabecalho-menu-lista {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 40vw; /* Largura do menu lateral */
+    height: 100%; /* Altura do menu */
+    background-color: var(--cor-primaria);
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-    justify-content: center;
-    
-    padding: 5% 5%;
+    gap: 2rem;
+
+    box-shadow: -4px 0 8px rgba(0, 0, 0, 0.2); /* Sombra do lado esquerdo */
+
+    transform: translateX(100%); /* Menu começa fora da tela */
+    transition: transform 0.4s ease-in-out; /* Animação suave para entrada e saída */
   }
-  .projetos-container{
+
+  .cabecalho-menu-lista.ativo {
+    transform: translateX(0); /* Menu entra na tela quando ativado */
+  }
+
+  /* Define a visibilidade e posição do botão hambúrguer */
+  .cabecalho-menu-mobile {
+    display: block;
+    position: absolute;
+    top: 20px;
+    right: 8rem;
+    z-index: 20;
+  }
+
+  /* Animação do botão hambúrguer */
+  .linha {
+    width: 32px;
+    height: 3px;
+    background: var(--cor-secundaria);
+    margin: 6px;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out; /* Suaviza a animação */
+  }
+
+  /* Animação ao abrir */
+  .linha.ativa:nth-child(1) {
+    transform: rotate(52deg) translate(6px, 10px);
+  }
+
+  .linha.ativa:nth-child(2) {
+    opacity: 0; /* Torna a linha do meio invisível */
+  }
+
+  .linha.ativa:nth-child(3) {
+    transform: rotate(-55deg) translate(3px, -10px);
+  }
+
+  .apresentacao {
+    padding: 10% 5%;
+    height: 50vh;
+    z-index: 1;
+  }
+  .apresentacao-conteudo {
+    width: 100%;
     display: flex;
-    flex-direction: row;
     justify-content: center;
-    flex-wrap: nowrap; /* Itens vão tentar ocupar uma única linha */
- 
+    align-items: center;
+  }
+
+  .apresentacao-conteudo-titulo {
+    font-size: 3rem;
+    text-align: center;
+  }
+
+  .apresentacao-imagem {
+    display: none;
+  }
+  /* Ajuste a largura do conteúdo quando o menu está ativo */
+  body.menu-ativo .apresentacao {
+    width: calc(100% - 40vw); /* Subtrai a largura do menu */
+  }
+
+  .sobre {
+    padding: 0% 5%;
+    height: 100vh;
+  }
+
+  .projetos {
+    padding: 0% 5%;
+    height: 90vh;
+  }
+  .projetos-container {
+    padding: 0% 15%;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
     gap: 2rem;
   }
 
-  .projetos-projeto{
-    width: calc(60% - 1rem); /* A largura dos cards agora será de 1/3 do contêiner, considerando o espaçamento */
-    box-sizing: border-box; /* Para garantir que o padding e border sejam considerados na largura */
+  .projetos-projeto {
+    width: 20vh;
+  }
+
+  .contato {
+    padding: 0% 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5% 0%;
+  }
+
+  .rodape {
+    padding-bottom: 1vh;
+    height: auto;
+  }
+}
+
+
+@media (min-width:320px) and (max-width:600px){
+
+  html,
+  body {
+    overflow-x: hidden;
+    box-sizing: border-box; /* Garantir que o padding não afete o layout */
+  }
+
+  #cabecalho.ativo {
+    display: none;
+  }
+
+  /* Define o tamanho e o espaçamento do menu */
+  .cabecalho-menu-lista {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 40vw; /* Largura do menu lateral */
+    height: 100%; /* Altura do menu */
+    background-color: var(--cor-primaria);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+
+    box-shadow: -4px 0 8px rgba(0, 0, 0, 0.2); /* Sombra do lado esquerdo */
+
+    transform: translateX(100%); /* Menu começa fora da tela */
+    transition: transform 0.4s ease-in-out; /* Animação suave para entrada e saída */
+  }
+
+  .cabecalho-menu-lista.ativo {
+    transform: translateX(0); /* Menu entra na tela quando ativado */
+  }
+
+  /* Define a visibilidade e posição do botão hambúrguer */
+  .cabecalho-menu-mobile {
+    display: block;
+    position: absolute;
+    top: 20px;
+    right: 8rem;
+    z-index: 20;
+  }
+
+  /* Animação do botão hambúrguer */
+  .linha {
+    width: 32px;
+    height: 3px;
+    background: var(--cor-secundaria);
+    margin: 6px;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out; /* Suaviza a animação */
+  }
+
+  /* Animação ao abrir */
+  .linha.ativa:nth-child(1) {
+    transform: rotate(52deg) translate(6px, 10px);
+  }
+
+  .linha.ativa:nth-child(2) {
+    opacity: 0; /* Torna a linha do meio invisível */
+  }
+
+  .linha.ativa:nth-child(3) {
+    transform: rotate(-55deg) translate(3px, -10px);
+  }
+
+  .apresentacao {
+    padding: 10% 5%;
+    height: 50vh;
+    z-index: 1;
+  }
+  .apresentacao-conteudo {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .apresentacao-conteudo-titulo {
+    font-size: 3rem;
+    text-align: center;
+  }
+
+  .apresentacao-imagem {
+    display: none;
+  }
+  /* Ajuste a largura do conteúdo quando o menu está ativo */
+  body.menu-ativo .apresentacao {
+    width: calc(100% - 40vw); /* Subtrai a largura do menu */
+  }
+
+  .sobre {
+    padding: 0% 5%;
+    height: 140vh;
+  }
+
+  .sobre-descricao{
+    width: 100%;  
 
   }
 
+  .projetos {
+    padding: 0% 5%;
+    height: 90vh;
+  }
+  .projetos-container {
+    padding: 0% 15%;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .projetos-projeto {
+    width: 20vh;
+  }
+
+  .contato {
+    padding: 0% 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5% 0%;
+  }
+
+  .rodape {
+    padding-bottom: 1vh;
+    height: auto;
+  }
 
 }
