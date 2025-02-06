@@ -81,6 +81,10 @@ body {
   color: var(--cor-hover);
 }
 
+
+
+
+
 /*Main*/
 .apresentacao {
   padding: 5% 15%;
@@ -268,6 +272,8 @@ button:hover {
 
   color: var(--cor-primaria);
 }
+
+
 
 .sobre-descricao strong {
   color: var(--cor-secundaria);
@@ -521,4 +527,115 @@ button:hover {
 .rodape-descricao {
   font-size: 1rem;
   font-family: var(--fonte-secundaria);
+}
+
+
+
+/* Responsividade */
+
+@media(max-width: 1170px){
+  .cabecalho{
+  }
+  .cabecalho-menu-lista{
+    gap: 8rem;
+  }
+
+  .apresentacao{
+    padding: 10% 5%;
+  }
+  
+
+  .sobre{
+    padding: 5% 5%;
+  }
+
+  .projetos{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    padding: 5% 5%;
+  }
+  .projetos-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: nowrap; /* Itens vão tentar ocupar uma única linha */
+ 
+    gap: 2rem;
+  }
+
+  .projetos-projeto{
+    width: calc(33.33% - 1rem); /* A largura dos cards agora será de 1/3 do contêiner, considerando o espaçamento */
+    box-sizing: border-box; /* Para garantir que o padding e border sejam considerados na largura */
+
+  }
+}
+
+@media(max-width: 801px){
+
+
+
+  
+  .apresentacao{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15% 5%;
+    border:2px solid black;
+  }
+  .apresentacao-conteudo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    border:2px solid red;
+  }
+
+  .apresentacao-conteudo-titulo{
+    text-align: center;
+  }
+
+  .apresentacao-conteudo-descricao{
+    text-align: center;
+  }
+
+
+
+
+  #apresentacao-imagem{
+    display: none;
+  }
+
+
+  .sobre{
+    padding: 15% 5%;
+  }
+
+
+  .projetos{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    padding: 5% 5%;
+  }
+  .projetos-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: nowrap; /* Itens vão tentar ocupar uma única linha */
+ 
+    gap: 2rem;
+  }
+
+  .projetos-projeto{
+    width: calc(60% - 1rem); /* A largura dos cards agora será de 1/3 do contêiner, considerando o espaçamento */
+    box-sizing: border-box; /* Para garantir que o padding e border sejam considerados na largura */
+
+  }
+
+
 }
