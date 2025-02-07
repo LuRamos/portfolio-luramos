@@ -413,6 +413,9 @@ button:hover {
   padding: 1rem;
 }
 
+.projetos-projeto a { text-decoration: none; } 
+.projetos-projeto a:visited, .projetos-projeto a:focus, .projetos-projeto a:hover { text-decoration: none; }
+
 .projetos-projeto-tecnologias {
   display: flex;
   justify-content: center;
