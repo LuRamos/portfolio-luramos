@@ -84,6 +84,12 @@ body {
 .cabecalho-menu-mobile {
   display: none;
   cursor: pointer;
+  position: fixed; /* Torna o botão fixo */
+  top: 3rem; /* Centraliza o botão verticalmente */
+  right: 10rem; /* Ajusta a distância da borda direita */
+  transform: translateY(-50%); /* Ajusta para centralizar o botão verticalmente */
+  z-index: 20; /* Garante que o botão fique acima dos outros elementos */
+
 }
 
 .cabecalho-menu-mobile div {
@@ -91,6 +97,11 @@ body {
   height: 2px;
   background: var(--cor-secundaria);
   margin: 8px;
+}
+
+/* Logo visível apenas em dispositivos móveis */
+.cabecalho-logo {
+  display: none; /* Esconde logo por padrão */
 }
 
 /*Main*/
@@ -218,11 +229,10 @@ body {
 /* Estilos do contêiner do slider */
 .sobre-slider {
   position: relative; /* Necessário para posicionar os botões de navegação dentro do contêiner */
-  max-width: 50%; /* Garante que o slider ocupe toda a largura disponível */
-  height: 80vh; /* 50% da altura da tela */
-  width: 80%; /* Ajusta a largura do slider (você pode modificar esse valor conforme necessário) */
+ height: 80vh; /* 50% da altura da tela */
+  width: 45vh; /* Ajusta a largura do slider (você pode modificar esse valor conforme necessário) */
   overflow: hidden; /* Garante que as imagens que saem da área do contêiner não apareçam */
-  border:3px solid red;
+
   border-radius: 4rem;
 }
 
@@ -230,8 +240,8 @@ body {
 .sobre-slider-slide {
   display: flex;
   transition: transform 0.5s ease;
-  width: calc(100% * var(--totalSlides)); /* Largura total baseada no número de imagens */
-  height: 100%; /* Ocupa 100% da altura do contêiner pai */
+ height: 100%; /* Ocupa 100% da altura do contêiner pai */
+width: 100%; /* Ocupa 100% da largura do contêiner pai */
 }
 
 /* Estilos das imagens dentro do slider */
@@ -283,7 +293,6 @@ button:hover {
   text-align: justify;
   line-height: 1.5;
   width: 400rem;
-  height: 120vh;
 
   color: var(--cor-primaria);
 }
@@ -546,7 +555,7 @@ button:hover {
 
 /* Responsividade */
 
-@media (min-width: 768px) and (max-width: 1182px) {
+@media (min-width: 767px) and (max-width: 1300px) {
   html,
   body {
     box-sizing: border-box;
@@ -566,7 +575,14 @@ button:hover {
 
   .sobre {
     padding: 0% 5%;
+    height: 115vh;
   }
+  .sobre-slider {
+    height: 50vh;
+    width: 28vh;
+  }
+
+
 
   .projetos {
     display: flex;
@@ -605,7 +621,7 @@ button:hover {
 }
 
 /* MEDIA QUERY PARA TELAS MENORES */
-@media (min-width: 600px) and (max-width: 767px) {
+@media (min-width: 600px) and (max-width: 766px) {
   html,
   body {
     overflow-x: hidden;
@@ -616,19 +632,16 @@ button:hover {
     display: none;
   }
 
+  .cabecalho-menu{
+    justify-content: flex-start; /* Alinha à esquerda ou no início */
+  }
+
   /* Define o tamanho e o espaçamento do menu */
   .cabecalho-menu-lista {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 40vw; /* Largura do menu lateral */
-    height: 100%; /* Altura do menu */
-    background-color: var(--cor-primaria);
-    display: flex;
+    display: none; /* Esconde o menu em dispositivos móveis */
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 2rem;
+    text-align: center;
+    width: 100%;
 
     box-shadow: -4px 0 8px rgba(0, 0, 0, 0.2); /* Sombra do lado esquerdo */
 
@@ -637,6 +650,7 @@ button:hover {
   }
 
   .cabecalho-menu-lista.ativo {
+    display: flex; /* Exibe o menu quando ativado */
     transform: translateX(0); /* Menu entra na tela quando ativado */
   }
 
@@ -644,9 +658,13 @@ button:hover {
   .cabecalho-menu-mobile {
     display: block;
     position: absolute;
-    top: 20px;
-    right: 8rem;
     z-index: 20;
+  }
+
+  .cabecalho-logo {
+    border: 2px solid var(--cor-secundaria);
+
+    display: block; /* Exibe o menu hambúrguer em telas pequenas */
   }
 
   /* Animação do botão hambúrguer */
@@ -697,9 +715,40 @@ button:hover {
   }
 
   .sobre {
+    display: flex;
+    flex-direction: column;
     padding: 0% 5%;
     height: 100vh;
   }
+  .sobre-descricao{
+    width: 100%;  
+
+  }
+ 
+  
+  .sobre-slider {
+    width: 100%; /* O slider ocupa toda a largura do contêiner */
+   height: 30vh; 
+    overflow: hidden; /* Oculta imagens extras */
+    position: relative;
+}
+
+.sobre-slider-slide {
+    display: flex;
+    width: 100%; /* Ajustado via JavaScript */
+    height: 100%;
+    transition: transform 0.5s ease-in-out;
+}
+
+.sobre-slider-imagem {
+    width: 100%; /* Cada imagem ocupa todo o slider */
+    height: 100%;
+    object-fit: cover; /* Garante que a imagem ocupe o espaço corretamente */
+    flex-shrink: 0; /* Impede que as imagens diminuam */
+    object-position: center; /* Centraliza a imagem no contêiner */
+
+  }
+
 
   .projetos {
     padding: 0% 5%;
@@ -825,17 +874,42 @@ button:hover {
   }
 
   .sobre {
+    display: flex;
+    flex-direction: column;
     padding: 0% 5%;
-    height: 140vh;
+    height: 120vh;
   }
-
   .sobre-descricao{
     width: 100%;  
 
   }
+ 
+  
+  .sobre-slider {
+    width: 100%; /* O slider ocupa toda a largura do contêiner */
+   height: 30vh; 
+    overflow: hidden; /* Oculta imagens extras */
+    position: relative;
+}
+
+.sobre-slider-slide {
+    display: flex;
+    width: 100%; /* Ajustado via JavaScript */
+    height: 100%;
+    transition: transform 0.5s ease-in-out;
+}
+
+.sobre-slider-imagem {
+    width: 100%; /* Cada imagem ocupa todo o slider */
+    height: 100%;
+    object-fit: cover; /* Garante que a imagem ocupe o espaço corretamente */
+    flex-shrink: 0; /* Impede que as imagens diminuam */
+    object-position: center; /* Centraliza a imagem no contêiner */
+
+  }
 
   .projetos {
-    padding: 0% 5%;
+    padding: 0% 15%;
     height: 90vh;
   }
   .projetos-container {
@@ -851,11 +925,31 @@ button:hover {
   }
 
   .contato {
-    padding: 0% 5%;
+    padding: 5% 15%;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 5% 0%;
+  }
+  .contato-titulo{
+    padding: 0 5%;
+    text-align: center;
+  }
+  .contato-descricao{
+    width: 100%;
+    text-align: center;
+    font-size: 1.2rem;
+  }
+
+  .contato-redes {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  .contato-redes-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
   }
 
   .rodape {

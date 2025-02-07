@@ -2,22 +2,6 @@ const cabecalho = document.querySelector("#cabecalho");
 
 // Função para verificar o scroll do cabeçalho
 function verificarScrollCabecalho() {
-  console.log(window.scrollY); // Verifique o valor do scroll
-  if (window.scrollY > 0) {
-    cabecalho.classList.add("ativo"); // Adiciona a classe 'ativo' quando o scroll for maior que 0
-  } else {
-    cabecalho.classList.remove("ativo"); // Remove a classe 'ativo' quando o scroll for no topo
-  }
-}
-
-// Variáveis
-const menuMobile = document.getElementById("menu-mobile"); // Botão de menu hambúrguer
-const menuLista = document.getElementById("cabecalho-menu-lista"); // Lista do menu
-
-// Função para verificar o scroll do cabeçalho e do menu hambúrguer
-function verificarScrollCabecalho() {
-  const cabecalho = document.getElementById("cabecalho");
-
   if (window.scrollY > 0) {
     cabecalho.classList.add("ativo"); // Fixando o cabeçalho
   } else {
@@ -25,11 +9,17 @@ function verificarScrollCabecalho() {
   }
 }
 
-// Adicionando os eventos de scroll
+// Adicionando o evento de scroll
 window.addEventListener("scroll", verificarScrollCabecalho);
 
+// Variáveis do menu mobile
+const menuMobile = document.getElementById("menu-mobile"); // Botão hambúrguer
+const menuLista = document.getElementById("menu-lista"); // Lista de itens do menu
 
-
+// Função para alternar o menu ao clicar no hambúrguer
+menuMobile.addEventListener("click", () => {
+  menuLista.classList.toggle("ativo"); // Alterna a visibilidade do menu
+});
 
 
 
@@ -64,21 +54,18 @@ document
   });
 
 
-
-
-
-
-
-  let currentSlide = 0;
   const images = document.querySelectorAll(".sobre-slider-imagem");
   const totalSlides = images.length;
   const prevButton = document.querySelector(".slider-prev");
   const nextButton = document.querySelector(".slider-next");
   const sliderImages = document.querySelector(".sobre-slider-slide");
   
+  let currentSlide = 0; // Define o índice inicial
+  
   // Define o número total de slides como uma variável CSS
   sliderImages.style.setProperty('--totalSlides', totalSlides);
   
+  // Função para mostrar o slide com base no índice
   function showSlide(index) {
     if (index < 0) {
       currentSlide = totalSlides - 1;
@@ -90,42 +77,27 @@ document
     sliderImages.style.transform = `translateX(${offset}%)`;
   }
   
+  // Navegação do botão "anterior"
   prevButton.addEventListener("click", () => {
     currentSlide--;
     showSlide(currentSlide);
   });
   
+  // Navegação do botão "próximo"
   nextButton.addEventListener("click", () => {
     currentSlide++;
     showSlide(currentSlide);
   });
   
-  showSlide(currentSlide);
-
-
-
-
-document.addEventListener("DOMContentLoaded", () => {
-  const menuMobile = document.querySelector("#menu-mobile");
-  const menuLista = document.querySelector("#menu-lista");
-  const linhas = document.querySelectorAll(".cabecalho-menu-mobile div");
-
-  if (!menuMobile || !menuLista) {
-    console.error("Erro: Elementos não encontrados.");
-    return;
+  // Função para rotação automática
+  function autoSlide() {
+    currentSlide++;
+    showSlide(currentSlide);
   }
-
-  // Abrir/Fechar o menu
-  menuMobile.addEventListener("click", () => {
-    menuLista.classList.toggle("ativo"); // Mostra e esconde o menu
-    linhas.forEach((linha) => linha.classList.toggle("ativa")); // Ativa/desativa a animação do hambúrguer
-  });
-
-  // Fecha o menu ao clicar em um item
-  document.querySelectorAll(".cabecalho-menu-link").forEach((link) => {
-    link.addEventListener("click", () => {
-      menuLista.classList.remove("ativo");
-      linhas.forEach((linha) => linha.classList.remove("ativa"));
-    });
-  });
-});
+  
+  // Iniciar a rotação automática a cada 4 segundos
+  const intervalID = setInterval(autoSlide, 4000);
+  
+  // Iniciar o slider mostrando o slide inicial
+  showSlide(currentSlide);
+  
