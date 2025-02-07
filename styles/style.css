@@ -104,6 +104,20 @@ body {
   display: none; /* Esconde logo por padrão */
 }
 
+
+/* Dropdown escondido por padrão */
+.cabecalho-menu-item.dropdown .dropdown-menu {
+  display: none; /* Oculta o menu dropdown por padrão */
+}
+
+/* Exibe o menu dropdown quando o item for clicado (mobile) */
+.cabecalho-menu-item.dropdown.ativo .dropdown-menu {
+  display: block; /* Exibe o menu dropdown */
+}
+
+
+
+
 /*Main*/
 .apresentacao {
   padding: 5% 15%;
@@ -628,31 +642,88 @@ button:hover {
     box-sizing: border-box; /* Garantir que o padding não afete o layout */
   }
 
+  .cabecalho{
+    padding:0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para baixo */
+    position: fixed; /* Fixando o menu no topo */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+
+  }
+
+
+
   #cabecalho.ativo {
     display: none;
   }
 
   .cabecalho-menu{
+    padding:3% 5%;
+    background-color: var(--cor-primaria);
     justify-content: flex-start; /* Alinha à esquerda ou no início */
+    width: 100%;
   }
 
   /* Define o tamanho e o espaçamento do menu */
   .cabecalho-menu-lista {
+    padding:0;
     display: none; /* Esconde o menu em dispositivos móveis */
     flex-direction: column;
     text-align: center;
     width: 100%;
+    
 
-    box-shadow: -4px 0 8px rgba(0, 0, 0, 0.2); /* Sombra do lado esquerdo */
-
-    transform: translateX(100%); /* Menu começa fora da tela */
-    transition: transform 0.4s ease-in-out; /* Animação suave para entrada e saída */
-  }
+    gap:0;
+    transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out; /* Animação suave para entrada e saída */
+ 
+}
 
   .cabecalho-menu-lista.ativo {
+    height: 25vh;
     display: flex; /* Exibe o menu quando ativado */
     transform: translateX(0); /* Menu entra na tela quando ativado */
+    padding: 3rem; 
+    opacity: 1; /* Torna o menu visível */
+    
+  
+  
   }
+
+
+  .cabecalho-menu-item {
+    padding: 10px 0; /* Ajuste o padding vertical para reduzir o espaçamento */
+    
+  }
+  
+  .cabecalho-menu-item a {
+    padding: 5px 15px; /* Ajuste o padding dos links */
+    display: block; /* Garante que o link ocupe a largura total do item */
+    text-align: center; /* Centraliza o texto */
+  }
+
+ /* Estilo do Dropdown - centralizando os itens */
+ .dropdown-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centraliza os itens do dropdown */
+  gap: 10px;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out; /* Transição suave para o dropdown */
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  background-color: var(--cor-primaria); /* Adicione uma cor de fundo para o dropdown */
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown:hover .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+}
+
 
   /* Define a visibilidade e posição do botão hambúrguer */
   .cabecalho-menu-mobile {
@@ -662,8 +733,7 @@ button:hover {
   }
 
   .cabecalho-logo {
-    border: 2px solid var(--cor-secundaria);
-
+    height: 3.5rem;
     display: block; /* Exibe o menu hambúrguer em telas pequenas */
   }
 
@@ -689,6 +759,9 @@ button:hover {
     transform: rotate(-55deg) translate(3px, -10px);
   }
 
+
+
+  /*APRESENTAÇÃO*/
   .apresentacao {
     padding: 10% 5%;
     height: 50vh;

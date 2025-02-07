@@ -12,31 +12,39 @@
 <body>
   <header class="cabecalho" id="cabecalho">
     <nav class="cabecalho-menu">
-
+  
       <!-- Logo visível apenas em telas móveis -->
-    <div class="cabecalho-logo" id="cabecalho-logo">
-      <h1 class="apresentacao-conteudo-titulo" id="apresentacao-conteudo-titulo">
-        <strong class="apresentacao-titulo-destaque" id="apresentacao-titulo-destaque">LR</strong>
-      </h1>
-    </div>
-
-
-
+      <div class="cabecalho-logo" id="cabecalho-logo">
+        <h1 class="apresentacao-conteudo-titulo" id="apresentacao-conteudo-titulo">
+          <strong class="apresentacao-titulo-destaque" id="apresentacao-titulo-destaque">LR</strong>
+        </h1>
+      </div>
+  
+      <!-- Menu Hambúrguer -->
       <div class="cabecalho-menu-mobile" id="menu-mobile">
         <div class="linha"></div>
         <div class="linha"></div>
         <div class="linha"></div>
-
       </div>
-      <ul class="cabecalho-menu-lista" id="menu-lista" >
+  
+      <!-- Menu Principal -->
+      <ul class="cabecalho-menu-lista" id="menu-lista">
         <li class="cabecalho-menu-item">
-          <a href="index.html" class="cabecalho-menu-link">Home</a>
+          <a href="#apresentacao" class="cabecalho-menu-link">Home</a>
         </li>
-        <li class="cabecalho-menu-item">
+        <li class="cabecalho-menu-item dropdown">
           <a href="#sobre" class="cabecalho-menu-link">Sobre</a>
+          <ul class="dropdown-menu">
+            <li><a href="#sobre">Sobre nós</a></li>
+            <li><a href="#equipe">Equipe</a></li>
+          </ul>
         </li>
-        <li class="cabecalho-menu-item">
+        <li class="cabecalho-menu-item dropdown">
           <a href="#projeto" class="cabecalho-menu-link">Projetos</a>
+          <ul class="dropdown-menu">
+            <li><a href="#projeto1">Projeto 1</a></li>
+            <li><a href="#projeto2">Projeto 2</a></li>
+          </ul>
         </li>
         <li class="cabecalho-menu-item">
           <a href="#contato" class="cabecalho-menu-link">Contato</a>
@@ -44,6 +52,7 @@
       </ul>
     </nav>
   </header>
+  
 
   <main class="apresentacao" id="apresentacao">
     <section class="apresentacao-conteudo">
