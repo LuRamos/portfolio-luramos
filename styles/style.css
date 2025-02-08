@@ -1025,57 +1025,24 @@ button:hover {
 
 }
 
-@media (min-width: 0px) and (max-width: 354px){
 
-  html,
-  body {
-    overflow-x: hidden;
-    box-sizing: border-box; /* Garantir que o padding não afete o layout */
-  }
 
-  .cabecalho{
-    display: flex;
-    position: fixed; /* Fixando o menu no topo */
-    top: 0;
-    left: 0;
-    width: 100%;
-    height:3rem;
-    z-index: 1000;
 
+/* Para telas de smartphones como o Galaxy S10 Plus */
+@media (min-width: 412px) and (max-width: 600px) {
+  .cabecalho {
+    height: 4rem;
   }
 
   .cabecalho-logo {
-    height: 3.5rem;
-    display: block; /* Exibe o menu hambúrguer em telas pequenas */
-  }
-  .cabecalho-menu{
-    background-color: var(--cor-primaria);
-    justify-content: flex-start; /* Alinha à esquerda ou no início */
-    width: 100%;
+    height: 3rem;
   }
 
-  /* Define o tamanho e o espaçamento do menu */
-  .cabecalho-menu-lista {
-    
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 40vw; /* Largura do menu lateral */
-    height: 100%; /* Altura do menu */
-    background-color: var(--cor-primaria);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 2rem;
-
-    box-shadow: -4px 0 8px rgba(0, 0, 0, 0.2); /* Sombra do lado esquerdo */
-
-    transform: translateX(100%); /* Menu começa fora da tela */
-    transition: transform 0.4s ease-in-out; /* Animação suave para entrada e saída */
+  .projetos-projeto {
+    width: 45vw; /* Ajuste o tamanho do projeto */
   }
 
-  .cabecalho-menu-lista.ativo {
-    transform: translateX(0); /* Menu entra na tela quando ativado */
+  .rodape {
+    height: 8vh;
   }
 }
