@@ -1,25 +1,35 @@
 const cabecalho = document.querySelector("#cabecalho");
+const menuMobile = document.getElementById("menu-mobile"); // Botão hambúrguer
+const menuLista = document.getElementById("menu-lista"); // Lista do menu
 
-// Função para verificar o scroll do cabeçalho
+// Alterna a visibilidade do cabeçalho no scroll
 function verificarScrollCabecalho() {
   if (window.scrollY > 0) {
-    cabecalho.classList.add("ativo"); // Fixando o cabeçalho
+    cabecalho.classList.add("ativo");
   } else {
-    cabecalho.classList.remove("ativo"); // Removendo a fixação
+    cabecalho.classList.remove("ativo");
   }
 }
 
-// Adicionando o evento de scroll
 window.addEventListener("scroll", verificarScrollCabecalho);
 
-// Variáveis do menu mobile
-const menuMobile = document.getElementById("menu-mobile"); // Botão hambúrguer
-const menuLista = document.getElementById("menu-lista"); // Lista de itens do menu
-
-// Função para alternar o menu ao clicar no hambúrguer
+// Alterna o menu e a animação do botão hambúrguer
 menuMobile.addEventListener("click", () => {
-  menuLista.classList.toggle("ativo"); // Alterna a visibilidade do menu
+  menuMobile.classList.toggle("ativo"); // Anima as linhas do hambúrguer
+  menuLista.classList.toggle("ativo"); // Mostra/esconde o menu lateral
 });
+
+
+// Fecha o menu ao rolar a página (apenas no mobile)
+window.addEventListener("scroll", () => {
+  if (window.innerWidth <= 768) { // Garante que só funciona no mobile
+    if (menuLista.classList.contains("ativo")) {
+      menuLista.classList.remove("ativo");
+      menuMobile.classList.remove("ativo"); // Reseta a animação do botão hambúrguer
+    }
+  }
+});
+
 
 
 
