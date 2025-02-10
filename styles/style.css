@@ -12,7 +12,7 @@
   --fonte-primaria: "Krona One", sans-serif;
   --fonte-secundaria: "Montserrat", sans-serif;
 
-  --color: rgb(255, 241, 136); /* Definindo a variável de cor */
+  --color: rgb(255, 229, 85); /* Definindo a variável de cor */
   --border-size: 1rem;
   --bg-color: #252525;
 }
@@ -301,7 +301,7 @@ button:hover {
 }
 
 .sobre-descricao strong {
-  color: var(--cor-secundaria);
+  color: var(--color);
 }
 
 /*Projetos*/
