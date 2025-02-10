@@ -705,8 +705,8 @@ button:hover {
   .sobre {
     display: flex;
     flex-direction: column;
-    padding: 5% 5%;
-    height: 355vh;
+    padding: 30% 5%;
+    height: 315vh;
   }
 
 
@@ -740,8 +740,8 @@ button:hover {
   }
 
   .projetos {
-    padding: 0% 15%;
-    height: 200vh;
+    padding: 25% 15%;
+    height: 150vh;
   }
   .projetos-container {
     padding: 0% 15%;
