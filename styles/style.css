@@ -565,9 +565,6 @@ button:hover {
 
 
 
-
-/* Para telas com no mínimo 1281px de largura */
-/* Para telas entre 1024px e 1280px */
 @media (min-width: 320px) and (max-width: 480px) {
   html,
   body {
@@ -705,8 +702,9 @@ button:hover {
   .sobre {
     display: flex;
     flex-direction: column;
-    padding: 30% 5%;
-    height: 315vh;
+    padding: 10% 5%;
+    min-height: 100vh; /* Garante que a seção ocupe pelo menos toda a tela */
+    height: auto; /* Permite que o conteúdo determine a altura necessária */
   }
 
 
@@ -740,8 +738,9 @@ button:hover {
   }
 
   .projetos {
-    padding: 25% 15%;
-    height: 150vh;
+    padding: 10% 15%;
+    min-height: 100vh; /* Garante que a seção ocupe pelo menos toda a tela */
+    height: auto; /* Permite que o conteúdo determine a altura necessária */
   }
   .projetos-container {
     padding: 0% 15%;
@@ -940,7 +939,8 @@ button:hover {
     display: flex;
     flex-direction: column;
     padding: 5% 5%;
-    height: 255vh;
+    min-height: 100vh; /* Garante que a seção ocupe pelo menos toda a tela */
+    height: auto; /* Permite que o conteúdo determine a altura necessária */
   }
 
 
@@ -974,8 +974,9 @@ button:hover {
   }
 
   .projetos {
-    padding: 0% 15%;
-    height: 200vh;
+    padding: 10% 15%;
+    min-height: 100vh; /* Garante que a seção ocupe pelo menos toda a tela */
+    height: auto; /* Permite que o conteúdo determine a altura necessária */
   }
   .projetos-container {
     padding: 0% 15%;
