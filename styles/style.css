@@ -784,7 +784,6 @@ button:hover {
   }
 
   .projetos-projeto {
-    border:3px solid red;
     width: 100%;
     max-width: 300px;
   }
@@ -1033,7 +1032,6 @@ button:hover {
     display: block; /* Exibe o card de projetos em telas médias */
     font-family: var(--fonte-secundaria);
     color: var(--cor-primaria); /* Define a cor do texto do link */
-    border: 3px solid red;
   }
 
 
