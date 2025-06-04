@@ -23,6 +23,6 @@ Bem-vindo ao meu portfólio! Sou **Luana Ramos dos Santos**, estudante de **Ciê
 **Ferramentas de Desenvolvimento:**
 - Git, GitHub e VSCode
 
-## 📱 Como Entrar em Contato
+
 
 Obrigada por visitar meu portfólio! Fique à vontade para explorar meus projetos e entrar em contato. Estou sempre aberta a novas oportunidades e desafios.
